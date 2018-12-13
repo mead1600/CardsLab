@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Deck {
 
     private ArrayList<Card> unDealt;
+    private ArrayList<Card> Dealt;
 
     public Deck(String[] rank, String[] suit, int[] pointValue){
         int possibilities = rank.length * suit.length * pointValue.length;
@@ -25,7 +26,9 @@ public class Deck {
 
     public Card deal(){
         Card val = unDealt.get(unDealt.size() - 1);
+        Dealt.add(val);
         unDealt.remove(unDealt.size() - 1);
         return val;
     }
+    
 }
