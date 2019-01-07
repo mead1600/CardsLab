@@ -30,5 +30,13 @@ public class Deck {
         unDealt.remove(unDealt.size() - 1);
         return val;
     }
+
+    public void shuffle()
+    {
+        for(int k = 51; k > 0; k--){
+            int r = (int)(Math.random()*k);
+
+        }
+    }
     
 }
