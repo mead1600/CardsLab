@@ -31,11 +31,11 @@ public class Deck {
         return val;
     }
 
-    public void shuffle()
-    {
-        for(int k = 51; k > 0; k--){
+    public void shuffle() {
+        for(int k = unDealt.size()-1; k > 0; k--){
             int r = (int)(Math.random()*k);
-
+            unDealt.add(Dealt.get(r));
+            Dealt.remove(r);
         }
     }
     
