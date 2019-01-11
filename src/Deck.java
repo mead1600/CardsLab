@@ -12,6 +12,7 @@ public class Deck {
             Card addition = new Card(rank[(int)(Math.random()*rank.length - 1)],suit[(int)(Math.random()*rank.length - 1)],pointValue[(int)(Math.random()*rank.length - 1)]);
             System.out.println(addition.toString());
             unDealt.add(addition);
+            shuffle();
         }
     }
 
@@ -26,19 +27,32 @@ public class Deck {
         return unDealt.size();
     }
 
-    public Card deal(){
-        Card val = unDealt.get(unDealt.size() - 1);
-        Dealt.add(val);
-        unDealt.remove(unDealt.size() - 1);
-        return val;
+    public Card deal() {
+        if (unDealt.size() != 0) {
+            Card card = unDealt.get(0);
+            Dealt.add(card);
+            unDealt.remove(0);
+            return card;
+        }
+        else return null;
     }
 
     public void shuffle() {
+        ArrayList<Card> cards = new ArrayList<Card>();
+        int index = 0;
         for(int k = unDealt.size()-1; k > 0; k--){
+            index = (int)(Math.random()*k);
+            cards.add(unDealt.get(index));
+            unDealt.remove(index);
+        }
+        for(int i = cards.size() - 1; i > 0; i--){
+            unDealt.add(cards.get(i));
+        }
+        /*for(int k = unDealt.size()-1; k > 0; k--){
             int r = (int)(Math.random()*k);
             unDealt.add(Dealt.get(r));
             Dealt.remove(r);
-        }
+        }*/
     }
 
     /*public String toString(){
